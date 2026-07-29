@@ -1,0 +1,38 @@
+<!--
+  EmailJS template for the Lichen "Get in Touch" form.
+  Paste this into: EmailJS dashboard -> Email Templates -> your template ->
+  Content tab -> switch to "Code editor" mode -> paste -> Save.
+  Settings tab: To Email = lichengrow@gmail.com, Reply To = {{from_email}}
+
+  Kept deliberately simple (no tables, no text-transform, no shorthand) since
+  some template editors/email clients strip CSS they don't recognize.
+-->
+<div style="background-color:#060e08; padding:32px 16px;">
+  <div style="max-width:520px; margin:0 auto; font-family:Arial, Helvetica, sans-serif;">
+
+    <div style="text-align:center; padding-bottom:20px;">
+      <div style="font-size:22px; font-weight:bold; letter-spacing:2px; color:#4ade80;">LICHEN</div>
+      <div style="font-size:11px; letter-spacing:2px; color:#8aaa90; margin-top:4px;">NEW WEBSITE MESSAGE</div>
+    </div>
+
+    <div style="background-color:#0b1710; border:1px solid #2d5c3e; border-radius:12px; padding:28px;">
+
+      <div style="font-size:11px; font-weight:bold; color:#8aaa90; margin-bottom:4px;">NAME</div>
+      <div style="font-size:16px; color:#e8f0e9; margin-bottom:18px;">{{from_name}}</div>
+
+      <div style="font-size:11px; font-weight:bold; color:#8aaa90; margin-bottom:4px;">EMAIL</div>
+      <div style="font-size:16px; margin-bottom:18px;">
+        <a href="mailto:{{from_email}}" style="color:#4ade80; text-decoration:none;">{{from_email}}</a>
+      </div>
+
+      <div style="font-size:11px; font-weight:bold; color:#8aaa90; margin-bottom:4px;">MESSAGE</div>
+      <div style="font-size:15px; line-height:1.6; color:#c8deca;">{{message}}</div>
+
+    </div>
+
+    <div style="text-align:center; font-size:11px; color:#556677; padding-top:20px;">
+      Sent from the "Get in Touch" form on lichen.local
+    </div>
+
+  </div>
+</div>

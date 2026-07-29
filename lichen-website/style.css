@@ -81,38 +81,6 @@ body {
   50%       { text-shadow: 0 0 18px rgba(74,222,128,0.38), 0 0 38px rgba(74,222,128,0.20); }
 }
 
-/* ── Status pill ── */
-.coming-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  border: 1px solid rgba(74,222,128,0.35);
-  background: rgba(74,222,128,0.06);
-  color: var(--green-pale);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  padding: 0.45rem 1.2rem;
-  border-radius: 100px;
-  margin-bottom: 1.5rem;
-}
-
-.coming-pill::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--green);
-  flex-shrink: 0;
-  animation: blink 1.4s ease-in-out infinite;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1;    }
-  50%       { opacity: 0.2; }
-}
-
 /* ── Tagline ── */
 .tagline {
   font-family: 'Playfair Display', serif;
@@ -153,17 +121,26 @@ body {
 }
 
 .feat {
+  display: block;
   background: rgba(74,222,128,0.04);
   border: 1px solid rgba(74,222,128,0.12);
   border-radius: 10px;
   padding: 1rem 0.75rem;
   text-align: center;
-  transition: border-color 0.2s, background 0.2s;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
 }
 
-.feat:hover {
+.feat:hover, .feat:focus-visible {
   background: rgba(74,222,128,0.08);
   border-color: rgba(74,222,128,0.28);
+  transform: translateY(-2px);
+}
+
+.feat:focus-visible {
+  outline: 2px solid var(--green-pale);
+  outline-offset: 2px;
 }
 
 .feat-icon {
@@ -216,9 +193,17 @@ body {
 
 /* ── Sections ── */
 .section {
-  max-width: 780px;
+  /* Grows on larger viewports but stays a comfortable reading width on
+     small/medium screens (unchanged from before). */
+  max-width: clamp(780px, 70vw, 1000px);
   margin: 0 auto;
   padding: 5rem 2rem;
+}
+
+/* Wider cap for content that benefits from the extra space on big screens
+   (video, multi-column feature grid) rather than long-form prose. */
+.section--wide {
+  max-width: clamp(780px, 85vw, 1320px);
 }
 
 .section--alt .section { padding: 4rem 2rem; }
@@ -302,6 +287,190 @@ body {
   color: #8aaa90;
   line-height: 1.7;
 }
+
+/* ── Video section ── */
+.video-frame {
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(74,222,128,0.18);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+}
+
+.video-frame video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #04140a;
+}
+
+/* ── Feature categories ── */
+.feature-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.feature-category {
+  background: rgba(74,222,128,0.04);
+  border: 1px solid rgba(74,222,128,0.15);
+  border-radius: 14px;
+  padding: 1.75rem;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.1rem;
+}
+
+.category-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.category-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f0faf2;
+  letter-spacing: 0.01em;
+}
+
+.category-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.category-list li {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: #8aaa90;
+  line-height: 1.65;
+  padding-left: 1rem;
+  position: relative;
+  scroll-margin-top: 2rem;
+  border-radius: 6px;
+  transition: background 0.6s ease, box-shadow 0.6s ease;
+}
+
+/* Briefly highlighted when landed on via a hero icon link (#feat-...) */
+.category-list li:target {
+  background: rgba(74,222,128,0.12);
+  box-shadow: 0 0 0 1px rgba(74,222,128,0.35);
+  padding: 0.5rem 0.75rem 0.5rem 1.25rem;
+  margin: -0.5rem -0.75rem -0.5rem 0;
+}
+
+.category-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--green);
+  opacity: 0.7;
+}
+
+.category-list li strong {
+  font-weight: 600;
+  color: #c8deca;
+}
+
+/* ── Contact form ── */
+.contact-form {
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.contact-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-top: 1rem;
+}
+
+.contact-label:first-of-type { margin-top: 0; }
+
+.contact-input {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text);
+  background: rgba(74,222,128,0.04);
+  border: 1px solid rgba(74,222,128,0.2);
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.contact-input:focus {
+  border-color: var(--green);
+  background: rgba(74,222,128,0.08);
+}
+
+.contact-textarea { resize: vertical; font-family: 'Inter', sans-serif; }
+
+/* Honeypot — off-screen rather than display:none, since some bots skip
+   display:none fields specifically but still fill in anything else. */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.contact-submit {
+  align-self: flex-start;
+  margin-top: 1.5rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #04140a;
+  background: var(--green);
+  border: none;
+  border-radius: 100px;
+  padding: 0.8rem 2rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.contact-submit:hover { background: var(--green-pale); }
+.contact-submit:active { transform: scale(0.98); }
+
+.contact-submit:focus-visible {
+  outline: 2px solid var(--green-pale);
+  outline-offset: 2px;
+}
+
+.contact-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.contact-status {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  min-height: 1.2em;
+}
+
+.contact-status--ok { color: var(--green); }
+.contact-status--error { color: #f28b82; }
 
 /* ── Scene Break ── */
 .scene-break {
