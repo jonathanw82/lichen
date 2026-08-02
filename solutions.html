@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="/lichen-website/assets/favicon.ico" type="image/x-icon">
+  <title>Solutions — Lichen Intelligent Growing Control</title>
+  <meta name="description" content="Monitor. Control. Automate. Optimise. Repeat. See how Lichen controls environment, irrigation & fertigation, and lighting across every zone of a commercial growing operation." />
+  <link rel="stylesheet" href="/lichen-website/style.css" />
+</head>
+<body>
+
+  <!-- Shared icon sprite (line icons, stroke = currentColor) -->
+  <svg class="icon-sprite" aria-hidden="true">
+    <defs>
+      <symbol id="i-menu" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><line x1="6" y1="18" x2="18" y2="6"/><polyline points="8,6 18,6 18,16"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><polyline points="4,13 9,18 20,6"/></symbol>
+      <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 10a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 20a2 2 0 0 0 4 0"/></symbol>
+      <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M3 9a15 15 0 0 1 18 0"/><path d="M6.5 13a10 10 0 0 1 11 0"/><path d="M10 17a5 5 0 0 1 4 0"/><circle cx="12" cy="20.2" r="0.7" fill="currentColor" stroke="none"/></symbol>
+      <symbol id="i-chart" viewBox="0 0 24 24"><line x1="4" y1="20" x2="4" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="20" y1="20" x2="20" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></symbol>
+      <symbol id="i-layers" viewBox="0 0 24 24"><polygon points="12,3 21,8 12,13 3,8"/><polyline points="3,14 12,19 21,14"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 4 8 8 9 4-1 8-4 8-9V6l-8-3z"/></symbol>
+      <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2-2 2.6-2.6z"/></symbol>
+      <symbol id="i-cloud-off" viewBox="0 0 24 24"><path d="M18 10a4 4 0 0 0-3.4-6H10a5 5 0 0 0-4.8 3.6"/><path d="M4 8a4.5 4.5 0 0 0 .5 9H17"/><line x1="2" y1="2" x2="22" y2="22"/></symbol>
+      <symbol id="i-droplet" viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.6" y1="4.6" x2="6.7" y2="6.7"/><line x1="17.3" y1="17.3" x2="19.4" y2="19.4"/><line x1="4.6" y1="19.4" x2="6.7" y2="17.3"/><line x1="17.3" y1="6.7" x2="19.4" y2="4.6"/></symbol>
+      <symbol id="i-wind" viewBox="0 0 24 24"><path d="M3 8h11a3 3 0 1 0-2.5-4.6"/><path d="M3 13h15a3 3 0 1 1-2.5 4.6"/><path d="M3 18h8"/></symbol>
+      <symbol id="i-thermo" viewBox="0 0 24 24"><path d="M14 14.76V5a2 2 0 0 0-4 0v9.76a4 4 0 1 0 4 0z"/></symbol>
+      <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M12 12l4-4"/><circle cx="12" cy="12" r="9"/><path d="M6 12H4M12 6V4M20 12h-2"/></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+      <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 2v5M15 2v5M7 7h10v4a5 5 0 0 1-10 0V7z"/><path d="M12 16v6"/></symbol>
+      <symbol id="i-map" viewBox="0 0 24 24"><polygon points="3,6 9,3 15,6 21,3 21,18 15,21 9,18 3,21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- ══ NAV ═══════════════════════════════════════════════════════════ -->
+  <nav class="nav" id="site-nav">
+    <a class="nav-brand" href="/">
+      <img src="/lichen-website/assets/logo.png" alt="Lichen logo" />
+      <span class="nav-brand-word">LICHEN</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/solutions.html" class="active">Solutions</a></li>
+      <li><a href="/#how-it-works">How It Works</a></li>
+      <li><a href="/#who-its-for">For Growers</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="/#contact">Get in Touch</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg class="icon"><use href="#i-menu"/></svg>
+    </button>
+  </nav>
+
+  <!-- ══ HERO ═══════════════════════════════════════════════════════════ -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <span class="hero-eyebrow">The Solution</span>
+        <h1>Monitor. Control. Automate. <em>Optimise. Repeat.</em></h1>
+        <p class="hero-sub">
+          Most control boxes stop at showing you a reading. Lichen goes further — it watches
+          every zone, acts on what it sees, and gets more useful to your operation the longer
+          it runs.
+        </p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="/#contact">Get in Touch</a>
+          <a class="btn btn-ghost" href="#tabs">Explore the Systems</a>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <img src="/lichen-website/assets/images/solutions-hero.jpg" alt="Grower checking the Lichen dashboard on a tablet in a polytunnel" />
+      </div>
+    </div>
+  </header>
+
+  <!-- ══ THE LICHEN ADVANTAGE ══════════════════════════════════════════ -->
+  <section class="section">
+    <div class="eyebrow">The Lichen Advantage</div>
+    <h2 class="heading">A control system that goes <em>further</em> than a box on the wall.</h2>
+    <p class="lede">
+      Hardware controllers can hold a setpoint. They can't tell you why yesterday's crop reacted
+      differently, or hand control to your phone at 6am. Lichen is built to do both.
+    </p>
+
+    <div class="steps">
+      <div class="step-row">
+        <div class="step-copy">
+          <div class="step-number">1</div>
+          <h3>Monitor</h3>
+          <p>Every sensor, every zone, one dashboard — temperature, humidity, CO₂, soil moisture, EC, pH, water level and light, live and historical.</p>
+        </div>
+        <div class="step-art device-mock">
+          <div class="device-mock-bar"><span></span><span></span><span></span></div>
+          <div class="device-mock-grid">
+            <div class="gauge"><div class="gauge-ring" style="--pct:70%"></div><div class="gauge-label">Zone A</div></div>
+            <div class="gauge"><div class="gauge-ring" style="--pct:45%"></div><div class="gauge-label">Zone B</div></div>
+            <div class="gauge"><div class="gauge-ring" style="--pct:90%"></div><div class="gauge-label">Zone C</div></div>
+          </div>
+          <div class="device-mock-chart">
+            <span style="height:40%"></span><span style="height:60%"></span><span style="height:35%"></span>
+            <span style="height:75%"></span><span style="height:55%"></span><span style="height:85%"></span>
+            <span style="height:65%"></span><span style="height:95%"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-row reverse">
+        <div class="step-copy">
+          <div class="step-number">2</div>
+          <h3>Control</h3>
+          <p>Reach any actuator across any site from a single app — open a vent, start a fertigation cycle, or dim a light bank without walking to a panel.</p>
+        </div>
+        <div class="step-art device-mock">
+          <div class="device-mock-bar"><span></span><span></span><span></span></div>
+          <div class="device-mock-grid">
+            <div class="gauge"><div class="gauge-ring" style="--pct:55%"></div><div class="gauge-label">Vents</div></div>
+            <div class="gauge"><div class="gauge-ring" style="--pct:80%"></div><div class="gauge-label">Pumps</div></div>
+            <div class="gauge"><div class="gauge-ring" style="--pct:65%"></div><div class="gauge-label">Lights</div></div>
+          </div>
+          <div class="device-mock-chart">
+            <span style="height:50%"></span><span style="height:50%"></span><span style="height:80%"></span>
+            <span style="height:80%"></span><span style="height:60%"></span><span style="height:60%"></span>
+            <span style="height:70%"></span><span style="height:70%"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="step-copy">
+          <div class="step-number">3</div>
+          <h3>Automate</h3>
+          <p>Set the targets once. Basic, Advanced Temp, or Smart Climate modes decide when to act — factoring in VPD and humidity, not just a single number.</p>
+        </div>
+        <div class="step-art device-mock">
+          <div class="device-mock-bar"><span></span><span></span><span></span></div>
+          <div class="device-mock-grid">
+            <div class="gauge"><div class="gauge-ring" style="--pct:85%"></div><div class="gauge-label">VPD</div></div>
+            <div class="gauge"><div class="gauge-ring" style="--pct:60%"></div><div class="gauge-label">Humidity</div></div>
+            <div class="gauge"><div class="gauge-ring" style="--pct:72%"></div><div class="gauge-label">Target</div></div>
+          </div>
+          <div class="device-mock-chart">
+            <span style="height:55%"></span><span style="height:65%"></span><span style="height:60%"></span>
+            <span style="height:70%"></span><span style="height:75%"></span><span style="height:68%"></span>
+            <span style="height:80%"></span><span style="height:72%"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-row reverse">
+        <div class="step-copy">
+          <div class="step-number">4</div>
+          <h3>Optimise</h3>
+          <p>Compare zones and seasons side by side, spot what drove your best harvest, and feed it straight back into next season's targets.</p>
+        </div>
+        <div class="step-art device-mock">
+          <div class="device-mock-bar"><span></span><span></span><span></span></div>
+          <div class="device-mock-grid">
+            <div class="gauge"><div class="gauge-ring" style="--pct:92%"></div><div class="gauge-label">Best Zone</div></div>
+            <div class="gauge"><div class="gauge-ring" style="--pct:58%"></div><div class="gauge-label">Avg Zone</div></div>
+            <div class="gauge"><div class="gauge-ring" style="--pct:75%"></div><div class="gauge-label">Trend</div></div>
+          </div>
+          <div class="device-mock-chart">
+            <span style="height:25%"></span><span style="height:35%"></span><span style="height:50%"></span>
+            <span style="height:55%"></span><span style="height:65%"></span><span style="height:78%"></span>
+            <span style="height:88%"></span><span style="height:96%"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SOLUTION TABS ═════════════════════════════════════════════════ -->
+  <section class="section section--surface" id="tabs">
+    <div class="eyebrow">What Lichen Controls</div>
+    <h2 class="heading">Three systems. <em>One platform.</em></h2>
+    <p class="lede">Instead of separate boxes for environment, irrigation and lighting that don't share data, Lichen brings all three under one roof.</p>
+
+    <div class="tabs">
+      <div class="tab-list" role="tablist">
+        <button class="tab-btn active" data-tab="environment" role="tab" aria-selected="true">Environment</button>
+        <button class="tab-btn" data-tab="irrigation" role="tab" aria-selected="false">Irrigation &amp; Fertigation</button>
+        <button class="tab-btn" data-tab="lighting" role="tab" aria-selected="false">Lighting</button>
+      </div>
+
+      <div class="tab-panel active" id="environment" data-panel="environment">
+        <div class="tab-panel-art">
+          <img src="/lichen-website/assets/images/environment.jpg" alt="Polytunnel rows alongside open field crops" />
+        </div>
+        <div>
+          <div class="eyebrow">01 · Environment</div>
+          <h3 style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.4rem; margin-bottom:1rem;">Keep every zone in its optimal range.</h3>
+          <p class="lede" style="margin-bottom:0;">Automatic vent control that reacts to real conditions, not a clock.</p>
+          <ul class="tab-panel-list">
+            <li><svg class="icon"><use href="#i-thermo"/></svg><span><strong>Temperature &amp; humidity monitoring</strong> — live readings from every zone, charted alongside VPD.</span></li>
+            <li><svg class="icon"><use href="#i-wind"/></svg><span><strong>Automatic vent control</strong> — Basic, Advanced Temp, or Smart Climate modes that factor in VPD and humidity together.</span></li>
+            <li><svg class="icon"><use href="#i-gauge"/></svg><span><strong>Fan control</strong> — independent ramp-up and full-speed thresholds for supplementary air movement.</span></li>
+            <li><svg class="icon"><use href="#i-wrench"/></svg><span><strong>Manual override, always</strong> — take direct command of any actuator, then hand it back.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="irrigation" data-panel="irrigation">
+        <div class="tab-panel-art">
+          <img src="/lichen-website/assets/images/irrigation.jpg" alt="Drip irrigation lines feeding young plants in grow bags" />
+        </div>
+        <div>
+          <div class="eyebrow">02 · Irrigation &amp; Fertigation</div>
+          <h3 style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.4rem; margin-bottom:1rem;">Water on what the soil needs, not a fixed clock.</h3>
+          <p class="lede" style="margin-bottom:0;">Trigger straight from live sensor readings across every bed.</p>
+          <ul class="tab-panel-list">
+            <li><svg class="icon"><use href="#i-droplet"/></svg><span><strong>Real-time soil moisture watering</strong> — dosing triggered by live readings, not just a schedule.</span></li>
+            <li><svg class="icon"><use href="#i-gauge"/></svg><span><strong>EC &amp; pH tracking</strong> — feed strength and acidity monitored continuously per zone.</span></li>
+            <li><svg class="icon"><use href="#i-chart"/></svg><span><strong>Water level sensors</strong> — tank and reservoir levels visible alongside every other reading.</span></li>
+            <li><svg class="icon"><use href="#i-wrench"/></svg><span><strong>Scheduled watering windows</strong> — up to five daily windows per actuator, set once and forgotten.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="lighting" data-panel="lighting">
+        <div class="tab-panel-art">
+          <img src="/lichen-website/assets/images/lighting.jpg" alt="Supplemental lighting rig over rows of tomato plants in a glasshouse" />
+        </div>
+        <div>
+          <div class="eyebrow">03 · Lighting</div>
+          <h3 style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.4rem; margin-bottom:1rem;">Top up daylight without wasting it.</h3>
+          <p class="lede" style="margin-bottom:0;">DLI tracking keeps supplemental lighting working with the sun, not against it.</p>
+          <ul class="tab-panel-list">
+            <li><svg class="icon"><use href="#i-sun"/></svg><span><strong>PAR &amp; DLI tracking</strong> — daily light integral calculated automatically and charted alongside your readings.</span></li>
+            <li><svg class="icon"><use href="#i-wrench"/></svg><span><strong>Lighting schedules</strong> — up to five daily windows per actuator, set once and forgotten.</span></li>
+            <li><svg class="icon"><use href="#i-chart"/></svg><span><strong>Zoomable history</strong> — see exactly when supplemental light kicked in across the last 30 days.</span></li>
+            <li><svg class="icon"><use href="#i-gauge"/></svg><span><strong>Manual override</strong> — take direct control of any light bank, then hand it back.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ HUB & SPOKE ═══════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="eyebrow">How It Works</div>
+    <h2 class="heading">One hub. Sensors <em>everywhere you need them.</em></h2>
+    <p class="lede">
+      A single control hub lives on your network. Wireless leaf-nodes carry sensors and switching
+      out to every growing space — new ones are auto-discovered the moment they're powered on,
+      no pairing wizard, no cloud round-trip required to keep running.
+    </p>
+
+    <div class="hub-diagram">
+      <svg viewBox="0 0 1200 340" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="hubg" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#0b3d3f"/><stop offset="100%" stop-color="#135c5e"/>
+          </linearGradient>
+        </defs>
+        <rect width="1200" height="340" fill="url(#hubg)"/>
+        <g stroke="#ffffff" stroke-opacity="0.06">
+          <line x1="0" y1="85" x2="1200" y2="85"/>
+          <line x1="0" y1="170" x2="1200" y2="170"/>
+          <line x1="0" y1="255" x2="1200" y2="255"/>
+        </g>
+        <!-- hub -->
+        <circle cx="600" cy="170" r="46" fill="#0e4c4e" stroke="#f2994a" stroke-width="2.5"/>
+        <text x="600" y="166" text-anchor="middle" fill="#ffd8ac" font-family="Montserrat, sans-serif" font-weight="700" font-size="13">LICHEN</text>
+        <text x="600" y="182" text-anchor="middle" fill="#ffd8ac" font-family="Montserrat, sans-serif" font-weight="700" font-size="13">HUB</text>
+
+        <!-- spokes -->
+        <g stroke="#f2994a" stroke-width="1.5" stroke-dasharray="4 5" opacity="0.7">
+          <line x1="600" y1="170" x2="220" y2="80"/>
+          <line x1="600" y1="170" x2="220" y2="170"/>
+          <line x1="600" y1="170" x2="220" y2="260"/>
+          <line x1="600" y1="170" x2="980" y2="80"/>
+          <line x1="600" y1="170" x2="980" y2="170"/>
+          <line x1="600" y1="170" x2="980" y2="260"/>
+        </g>
+
+        <!-- leaf nodes -->
+        <g font-family="Inter, sans-serif" font-size="12" fill="#e8f5f5">
+          <g>
+            <circle cx="220" cy="80" r="20" fill="#0e4c4e" stroke="#ffd8ac" stroke-width="1.5"/>
+            <text x="220" y="84" text-anchor="middle" font-size="10" fill="#ffd8ac">TUNNEL 1</text>
+          </g>
+          <g>
+            <circle cx="220" cy="170" r="20" fill="#0e4c4e" stroke="#ffd8ac" stroke-width="1.5"/>
+            <text x="220" y="174" text-anchor="middle" font-size="10" fill="#ffd8ac">TUNNEL 2</text>
+          </g>
+          <g>
+            <circle cx="220" cy="260" r="20" fill="#0e4c4e" stroke="#ffd8ac" stroke-width="1.5"/>
+            <text x="220" y="264" text-anchor="middle" font-size="9" fill="#ffd8ac">PROP HOUSE</text>
+          </g>
+          <g>
+            <circle cx="980" cy="80" r="20" fill="#0e4c4e" stroke="#ffd8ac" stroke-width="1.5"/>
+            <text x="980" y="84" text-anchor="middle" font-size="10" fill="#ffd8ac">IRRIGATION</text>
+          </g>
+          <g>
+            <circle cx="980" cy="170" r="20" fill="#0e4c4e" stroke="#ffd8ac" stroke-width="1.5"/>
+            <text x="980" y="174" text-anchor="middle" font-size="10" fill="#ffd8ac">LIGHTING</text>
+          </g>
+          <g>
+            <circle cx="980" cy="260" r="20" fill="#0e4c4e" stroke="#ffd8ac" stroke-width="1.5"/>
+            <text x="980" y="264" text-anchor="middle" font-size="10" fill="#ffd8ac">WEATHER</text>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ══ BENEFITS ══════════════════════════════════════════════════════ -->
+  <section class="section section--surface">
+    <div class="eyebrow">Reliability &amp; Access</div>
+    <h2 class="heading">Runs on your network. <em>Answers to you.</em></h2>
+
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon"><svg class="icon"><use href="#i-plug"/></svg></div>
+        <h3>Plug-and-Play Sensors</h3>
+        <p>New sensors and leaf-nodes appear automatically the moment they're connected — no pairing wizard.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon"><svg class="icon"><use href="#i-lock"/></svg></div>
+        <h3>Per-Device Security</h3>
+        <p>Every device gets its own unique, revocable credentials — never a shared password.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon"><svg class="icon"><use href="#i-cloud-off"/></svg></div>
+        <h3>No Cloud Dependency</h3>
+        <p>Runs on your own hardware, not a third-party cloud — automation keeps working even if the internet doesn't.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon"><svg class="icon"><use href="#i-wifi"/></svg></div>
+        <h3>Installable App</h3>
+        <p>Add Lichen to your home screen; the app shell still opens when you're offline.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon"><svg class="icon"><use href="#i-gauge"/></svg></div>
+        <h3>Node Health &amp; Uptime</h3>
+        <p>Live online/offline status with a full uptime history per leaf-node, so nothing fails silently.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon"><svg class="icon"><use href="#i-shield"/></svg></div>
+        <h3>One-Click Backup</h3>
+        <p>Export and restore your entire farm setup in a click — configuration you never have to rebuild from memory.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FAQ ═══════════════════════════════════════════════════════════ -->
+  <section class="section" id="faq">
+    <div class="eyebrow">Questions</div>
+    <h2 class="heading">Frequently asked.</h2>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Does this replace my existing controllers, or work alongside them?</summary>
+        <p>Lichen is designed to control the vents, pumps and lighting hardware you already have — it adds sensing, automation and remote access on top of your existing structures rather than requiring a rebuild.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How many zones or sites can it manage?</summary>
+        <p>Multi-farm management is built in — run unlimited growing spaces from a single account, each with its own sensors, crops and control settings.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What sensors are available?</summary>
+        <p>Air temperature and humidity, soil moisture, temperature, EC and pH, water level, and PAR — added to the network as your growing space grows.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Does automation keep running if the internet drops?</summary>
+        <p>Yes. The hub runs on your local network and keeps executing your automation rules locally — you're not dependent on an external cloud service to keep your crop safe.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How is device security handled?</summary>
+        <p>Every device is issued its own unique, revocable credentials rather than sharing a single password, and node uptime is tracked so a dropped connection is visible immediately.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I export my data or move it elsewhere?</summary>
+        <p>Yes — one-click backup and restore covers your entire farm setup, and your data lives on your own hardware from day one.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ══ CTA BAND ══════════════════════════════════════════════════════ -->
+  <div class="cta-band">
+    <h2>See it running on <em>your growing operation.</em></h2>
+    <p>Tell us about your site and we'll walk you through how Lichen would fit.</p>
+    <a class="btn btn-primary" href="/#contact">Get in Touch</a>
+  </div>
+
+  <!-- ══ FOOTER ════════════════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">
+          <img src="/lichen-website/assets/logo.png" alt="Lichen logo" />
+          <span>LICHEN</span>
+        </div>
+        <p class="footer-desc">Intelligent control for commercial growers, from Hortisynthesis.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Site</h5>
+        <ul>
+          <li><a href="/solutions.html">Solutions</a></li>
+          <li><a href="/#how-it-works">How It Works</a></li>
+          <li><a href="/#who-its-for">For Growers</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="/#contact">Get in Touch</a></li>
+          <li><a href="mailto:lichengrow@gmail.com">lichengrow@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Lichen · Intelligent Glasshouse & Polytunnel Control · Hortisynthesis</span>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    let navToggle = document.getElementById('nav-toggle');
+    let siteNav = document.getElementById('site-nav');
+    navToggle.addEventListener('click', function () {
+      let open = siteNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    // Solution tabs
+    let tabBtns = document.querySelectorAll('.tab-btn');
+    let tabPanels = document.querySelectorAll('.tab-panel');
+    tabBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        tabBtns.forEach(function (b) { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+        tabPanels.forEach(function (p) { p.classList.remove('active'); });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // Deep-link to a tab via #environment / #irrigation / #lighting
+    let hashTab = window.location.hash.replace('#', '');
+    if (hashTab) {
+      let targetBtn = document.querySelector('.tab-btn[data-tab="' + hashTab + '"]');
+      if (targetBtn) targetBtn.click();
+    }
+  </script>
+</body>
+</html>
