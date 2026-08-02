@@ -655,6 +655,60 @@ h2.heading em { font-style: normal; color: var(--amber-dark); }
   line-height: 1.65;
 }
 
+.benefits-grid--dark {
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 3rem 2rem;
+  margin-top: 4rem;
+}
+
+.benefit-item {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.benefit-icon-circle {
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.benefit-icon-circle .icon { width: 1.7rem; height: 1.7rem; }
+
+/* Distinct fill per column so the six icons read apart at a glance,
+   instead of six identical outlined circles. */
+.benefit-item:nth-child(3n+1) .benefit-icon-circle { background: var(--amber); color: var(--teal); }
+.benefit-item:nth-child(3n+2) .benefit-icon-circle { background: #fff; color: var(--teal-2); }
+.benefit-item:nth-child(3n) .benefit-icon-circle { background: var(--teal-3); color: #fff; }
+
+.benefit-item h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+.benefit-item p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.65;
+  max-width: 26ch;
+}
+
+@media (max-width: 900px) {
+  .benefits-grid--dark { grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+
+@media (max-width: 600px) {
+  .benefits-grid--dark { grid-template-columns: 1fr; }
+}
+
 /* ── Solutions teaser cards (index page) ── */
 .solutions-teaser {
   display: grid;
@@ -793,16 +847,6 @@ h2.heading em { font-style: normal; color: var(--amber-dark); }
 .tab-panel-list li strong { color: var(--ink); font-weight: 600; }
 .tab-panel-list .icon { color: var(--teal-3); margin-top: 0.2rem; width: 1.15rem; height: 1.15rem; }
 
-/* ── Hub & spoke diagram ── */
-.hub-diagram {
-  margin-top: 3rem;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-}
-
-.hub-diagram svg { width: 100%; height: auto; display: block; }
-
 /* ── FAQ ── */
 .faq-list { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 0.85rem; }
 
@@ -895,6 +939,13 @@ h2.heading em { font-style: normal; color: var(--amber-dark); }
 }
 
 .contact-point p { font-size: 0.88rem; color: var(--text-dim); line-height: 1.6; }
+
+.contact-footnote {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  margin-top: -0.5rem;
+}
 
 .contact-form {
   background: var(--surface);
