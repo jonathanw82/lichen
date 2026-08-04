@@ -540,6 +540,17 @@ h2.heading em { font-style: normal; color: var(--amber-dark); }
   line-height: 1.75;
 }
 
+/* Real product screenshot used in place of the device-mock for a step */
+.step-shot {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  background: #0e1620;
+}
+
+.step-shot img { width: 100%; height: auto; display: block; }
+
 /* Fake device mockup used as the "screenshot" for each step */
 .device-mock {
   background: linear-gradient(155deg, #0e3f41, #145c5e);
@@ -1086,9 +1097,10 @@ footer.site-footer {
   .tab-panel-art { order: -1; }
   .contact-wrap { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
-}
 
-@media (max-width: 640px) {
+  /* Nav-links overflow the header row well before 640px on tablet-ish
+     widths, so the hamburger takes over at the same 900px breakpoint
+     as the rest of the layout instead of a separate 640px cutoff. */
   .nav-links { display: none; }
   .nav-toggle { display: block; }
   .nav.open .nav-links {
@@ -1103,6 +1115,16 @@ footer.site-footer {
     padding: 0.5rem 2rem 1rem;
   }
   .nav.open .nav-links li { width: 100%; padding: 0.75rem 0; border-bottom: 1px solid var(--border-soft); }
+}
+
+@media (max-width: 640px) {
   .footer-inner { grid-template-columns: 1fr; }
   .section { padding: 3.5rem 1.25rem; }
+}
+
+@media (max-width: 480px) {
+  /* Brand wordmark + CTA pill + hamburger no longer fit on one row
+     below ~420px and start overlapping; drop the CTA since the
+     hamburger menu still exposes a Contact link. */
+  .nav-cta { display: none; }
 }
