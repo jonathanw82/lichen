@@ -49,6 +49,10 @@ a { color: inherit; }
 /* ══════════════════════════════════════════════════════════════════════
    NAV
    ══════════════════════════════════════════════════════════════════════ */
+#tabs {
+  scroll-margin-top: 5rem;
+}
+
 .nav {
   position: sticky;
   top: 0;
@@ -1128,3 +1132,56 @@ footer.site-footer {
      hamburger menu still exposes a Contact link. */
   .nav-cta { display: none; }
 }
+
+/* ══ IMAGE MODAL (dashboard screenshot lightbox) ═══════════════════════ */
+.step-shot img { cursor: zoom-in; }
+
+.img-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  background: rgba(10, 16, 14, 0.88);
+  cursor: zoom-out;
+}
+
+.img-modal.open { display: flex; }
+
+.img-modal-inner {
+  position: relative;
+  display: inline-flex;
+  max-width: 90vw;
+  max-height: 88vh;
+}
+
+.img-modal img {
+  max-width: 90vw;
+  max-height: 88vh;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  cursor: default;
+  display: block;
+}
+
+.img-modal-close {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid rgba(10, 16, 14, 0.88);
+  background: #fff;
+  color: var(--ink, #14211d);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+}
+
+.img-modal-close:hover { background: rgba(255, 255, 255, 0.22); }
+.img-modal-close svg { width: 20px; height: 20px; }

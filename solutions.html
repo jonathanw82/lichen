@@ -147,7 +147,7 @@
         <button class="tab-btn" data-tab="lighting" role="tab" aria-selected="false">Lighting</button>
       </div>
 
-      <div class="tab-panel active" id="environment" data-panel="environment">
+      <div class="tab-panel active" id="panel-environment" data-panel="environment">
         <div class="tab-panel-art">
           <img src="/lichen-website/assets/images/environment.jpg" alt="Polytunnel rows alongside open field crops" />
         </div>
@@ -164,7 +164,7 @@
         </div>
       </div>
 
-      <div class="tab-panel" id="irrigation" data-panel="irrigation">
+      <div class="tab-panel" id="panel-irrigation" data-panel="irrigation">
         <div class="tab-panel-art">
           <img src="/lichen-website/assets/images/irrigation.jpg" alt="Drip irrigation lines feeding young plants in grow bags" />
         </div>
@@ -181,7 +181,7 @@
         </div>
       </div>
 
-      <div class="tab-panel" id="lighting" data-panel="lighting">
+      <div class="tab-panel" id="panel-lighting" data-panel="lighting">
         <div class="tab-panel-art">
           <img src="/lichen-website/assets/images/lighting.jpg" alt="Supplemental lighting rig over rows of tomato plants in a glasshouse" />
         </div>
@@ -312,6 +312,16 @@
     </div>
   </footer>
 
+  <!-- Dashboard screenshot lightbox -->
+  <div class="img-modal" id="img-modal">
+    <div class="img-modal-inner">
+      <button class="img-modal-close" id="img-modal-close" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+      </button>
+      <img id="img-modal-img" src="" alt="" />
+    </div>
+  </div>
+
   <script>
     // Mobile nav toggle
     let navToggle = document.getElementById('nav-toggle');
@@ -330,7 +340,7 @@
         tabPanels.forEach(function (p) { p.classList.remove('active'); });
         btn.classList.add('active');
         btn.setAttribute('aria-selected', 'true');
-        document.getElementById(btn.dataset.tab).classList.add('active');
+        document.querySelector('.tab-panel[data-panel="' + btn.dataset.tab + '"]').classList.add('active');
       });
     });
 
@@ -338,8 +348,26 @@
     let hashTab = window.location.hash.replace('#', '');
     if (hashTab) {
       let targetBtn = document.querySelector('.tab-btn[data-tab="' + hashTab + '"]');
-      if (targetBtn) targetBtn.click();
+      if (targetBtn) {
+        targetBtn.click();
+        document.getElementById('tabs').scrollIntoView();
+      }
     }
+
+    // Dashboard screenshot lightbox
+    let imgModal = document.getElementById('img-modal');
+    let imgModalImg = document.getElementById('img-modal-img');
+    document.querySelectorAll('.step-shot img').forEach(function (img) {
+      img.addEventListener('click', function () {
+        imgModalImg.src = img.src;
+        imgModalImg.alt = img.alt;
+        imgModal.classList.add('open');
+      });
+    });
+    function closeImgModal() { imgModal.classList.remove('open'); imgModalImg.src = ''; }
+    document.getElementById('img-modal-close').addEventListener('click', closeImgModal);
+    imgModal.addEventListener('click', function (e) { if (e.target === imgModal) closeImgModal(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeImgModal(); });
   </script>
 </body>
 </html>
