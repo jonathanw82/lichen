@@ -1,0 +1,4 @@
+# Jekyll build settings for GitHub Pages. The site itself is plain HTML.
+# Notes for Claude Code stay in the repo but are never published.
+exclude:
+  - CLAUDE.md
